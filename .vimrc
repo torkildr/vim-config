@@ -1,119 +1,72 @@
-"
-" ~postlogic's vimrc
-"   -- with tons of stuff borrowed from all over.
-
-
-"Functions 'n stuff
-
-fun! <SID>SetStatusLine()
-  let l:s1="%-3.3n\\ %f\\ %h%m%r%w"
-  let l:s2="[%{strlen(&filetype)?&filetype:'?'},%{&encoding},%{&fileformat}]"
-  let l:s3="%=\\ 0x%-8B\\ \\ %-14.(%l,%c%V%)\\ %<%P"
-  execute "set statusline=" . l:s1 . l:s2 . l:s3
-endfun
-
-if v:progname =~? "evim"
-  finish
-endif
-
-if v:version >= 700
-  try
-    setlocal numberwidth=3
-  catch
-  endtry
-endif
-
-if has('gui_running')
-    set columns=90
-    set lines=40
-    set clipboard+=unnamed
-    set guioptions+=a
-    set guioptions+=c
-    set guioptions+=m
-    colorscheme desert
-    set guifont=Bitstream\ Vera\ Sans\ Mono\ 9
-elseif (&term == 'screen.linux') || (&term =~ '^linux')
-    set t_Co=8
-    colorscheme desert
-elseif (&term == 'rxvt-unicode') || (&term =~ '^xterm') || (&term =~ '^screen')
-    set mouse=a
-    set ttymouse=xterm
-    colorscheme desert
-else
-    colorscheme desert
-endif
-
-" Options
+" postlogic's vimrc
 
 set nocompatible
-set backspace=indent,eol,start
-set nobackup
-set history=50
-set ruler
-set showcmd
-set incsearch
-set nowrap
-set cmdheight=3
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set smartindent
-set number
-set laststatus=2
-set encoding=utf-8
-set t_Co=256 " More colors!
-let html_use_css=1
-call <SID>SetStatusLine()
-map Q gq
+set hidden				" Don't close buffers, hide them.
+set nowrap				" Don't wrap lines
+set tabstop=4				" A tab is four spaces
+set shiftwidth=4			" Number of spaces to use for indenting
+set backspace=indent,eol,start		" Allow backspacing over everything in insert mode
+set autoindent				" Always set autoindenting on
+set copyindent				" Copy the previous indentation on autoindenting
+set number				" Show line numbers
+set shiftround				" Use multiples of shiftwidth when indenting with > and <
+set showmatch				" Show matching parenthesis
+set ignorecase				" Ignore case when searching
+set smartcase				" Ignore case if search is all lowercase, case-sensitive otherwise
+set smarttab				" Insert tabs on the start of a line according to shiftwidth, not tabstop
+set hlsearch				" Highlight searchterms
+set incsearch				" Show search matches as you type
+set history=1000			" Remember more commands and search history
+set undolevels=1000			" Use many levels of undo
+set wildignore=*.swp,*.bak,*.pyc,*.class " Ignore some file endings
+set title				" Change terminals title
+set visualbell				" Don't beep
+set noerrorbells			" Don't beep
+set nobackup				" No backup files!
+set noswapfile				" No swap files!
+set scrolloff=4				" Keep 4 lines off the edges of the screen when scrolling
+set gdefault				" Search/replace globally
+set nolist				" Don't show invisible chars by default
+set mouse=a				" Turn on mouse support where applicable
+set modelines=0
+set fileformats="unix,dos,mac"
 
-" File explorer stuff
-let g:netrw_browse_split=2
-let g:netrw_winsize=20
-let g:netrw_preview=1
+filetype plugin indent on
 
-runtime ftplugin/man.vim
+" Automatically use regular regexp for matching by prepending \v
+nnoremap / /\v
+vnoremap / /\v
 
-set wildchar=<tab>
-set wildmenu
-set wildmode=longest:full,full
-
-if v:version >= 700
-    set cursorline
-    set completeopt=menu,menuone,longest,preview
-    set spelllang=en_us
-    set numberwidth=1
-    " imma commnt with missspellings, use me tu tesst
-    
-    "popup coloring - use mine, not yours
-    hi Pmenu ctermbg=2 guibg=darkolivegreen
-    hi PmenuSel ctermbg=0 guibg=black
+if &t_Co >= 256 || has("gui_running")
+	colorscheme ir_black
 endif
 
-" Plugins
-
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
+if &t_Co >= 2 || has("gui_running")
+	syntax on
 endif
 
-if has("autocmd")
-  filetype plugin indent on
-  
-  augroup vimrcEx
-  au!
+" Bindings
+cmap w!! w !sudo tee % >/dev/null	" Sudo to write
+set pastetoggle=<F2>			" Toggle paste mode with F2
 
-  autocmd FileType text setlocal textwidth=78
+" Functions
+fun! s:ToggleMouse()
+	if !exists("s:old_mouse")
+		let s:old_mouse = "a"
+	endif
 
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
+	if &mouse == ""
+		let &mouse = s:old_mouse
+		echo "Mouse is for Vim (" . &mouse . ")"
+	else
+		let s:old_mouse = &mouse
+		let &mouse = ""
+		echo "Mouse is for terminal"
+	endif
+endfunction
 
-  augroup END
-else
-  set smartindent
-endif
-
-" Mapping
-map ,# :s/^/#/<CR> <Esc>:nohlsearch <CR>
+" NERDTree stuff
+let NERDTreeShowFiles=1
+let NERDTreeShowHidden=1
+let NERDTreeHighlightCursorline=1
+let NERDTreeMouseMode=2
