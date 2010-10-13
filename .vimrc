@@ -65,7 +65,11 @@ fun! s:ToggleMouse()
 	endif
 endfunction
 
-" NERDTree stuff
+" Pathogen settings
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
+" NERDTree settings
 let NERDTreeShowFiles=1
 let NERDTreeShowHidden=1
 let NERDTreeHighlightCursorline=1
