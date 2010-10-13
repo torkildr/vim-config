@@ -1,0 +1,13 @@
+My vimrc!
+
+This configuration is based on different configurations around the net.
+
+To use this, do the following:
+
+git clone github.com/postlogic/vim-config.git ~/.vim
+cd ~/.vim
+git submodule init
+git submodule update
+ln -s .vimrc ~/.vimrc
+
+Enjoy!
