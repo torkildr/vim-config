@@ -37,13 +37,7 @@ filetype plugin indent on
 nnoremap / /\v
 vnoremap / /\v
 
-if &t_Co >= 256 || has("gui_running")
-	colorscheme twilight
-endif
-
-if &t_Co >= 2 || has("gui_running")
-	syntax on
-endif
+colorscheme twilight
 
 " Bindings
 cmap w!! w !sudo tee % >/dev/null	" Sudo to write
