@@ -38,7 +38,7 @@ nnoremap / /\v
 vnoremap / /\v
 
 if &t_Co >= 256 || has("gui_running")
-	colorscheme ir_black
+	colorscheme twilight
 endif
 
 if &t_Co >= 2 || has("gui_running")
