@@ -68,3 +68,7 @@ let NERDTreeShowFiles=1
 let NERDTreeShowHidden=1
 let NERDTreeHighlightCursorline=1
 let NERDTreeMouseMode=2
+
+" OS X doesn't seem to want syntax as default...
+syntax on
+
