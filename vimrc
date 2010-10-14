@@ -5,7 +5,6 @@ set hidden				" Don't close buffers, hide them.
 set nowrap				" Don't wrap lines
 set expandtab				" Insert softtabstop number of spaces
 set softtabstop=4			" Number of spaces
-set tabstop=4				" A tab is four spaces
 set shiftwidth=4			" Number of spaces to use for indenting
 set backspace=indent,eol,start		" Allow backspacing over everything in insert mode
 set autoindent				" Always set autoindenting on
