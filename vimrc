@@ -14,7 +14,6 @@ set shiftround				" Use multiples of shiftwidth when indenting with > and <
 set showmatch				" Show matching parenthesis
 set ignorecase				" Ignore case when searching
 set smartcase				" Ignore case if search is all lowercase, case-sensitive otherwise
-set smarttab				" Insert tabs on the start of a line according to shiftwidth, not tabstop
 set hlsearch				" Highlight searchterms
 set incsearch				" Show search matches as you type
 set history=1000			" Remember more commands and search history
