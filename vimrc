@@ -5,7 +5,6 @@ set hidden				" Don't close buffers, hide them.
 set nowrap				" Don't wrap lines
 set expandtab				" Insert softtabstop number of spaces
 set softtabstop=4			" Number of spaces
-set tabstop=4				" A tab is four spaces
 set shiftwidth=4			" Number of spaces to use for indenting
 set backspace=indent,eol,start		" Allow backspacing over everything in insert mode
 set autoindent				" Always set autoindenting on
@@ -15,7 +14,6 @@ set shiftround				" Use multiples of shiftwidth when indenting with > and <
 set showmatch				" Show matching parenthesis
 set ignorecase				" Ignore case when searching
 set smartcase				" Ignore case if search is all lowercase, case-sensitive otherwise
-set smarttab				" Insert tabs on the start of a line according to shiftwidth, not tabstop
 set hlsearch				" Highlight searchterms
 set incsearch				" Show search matches as you type
 set history=1000			" Remember more commands and search history
