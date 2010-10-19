@@ -33,6 +33,13 @@ set fileformats="unix,dos,mac"
 
 filetype plugin indent on
 
+" Set window size and color scheme for gvim
+if has("gui_running")
+    set lines=40
+    set columns=100
+    colorscheme desert
+endif
+
 " Automatically use regular regexp for matching by prepending \v
 nnoremap / /\v
 vnoremap / /\v
