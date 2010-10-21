@@ -33,11 +33,17 @@ set fileformats="unix,dos,mac"
 
 filetype plugin indent on
 
+" Set window size and color scheme for gvim
+if has("gui_running")
+    set lines=40
+    set columns=100
+endif
+
+colorscheme twilight
+
 " Automatically use regular regexp for matching by prepending \v
 nnoremap / /\v
 vnoremap / /\v
-
-colorscheme twilight
 
 " Bindings
 cmap w!! w !sudo tee % >/dev/null	" Sudo to write
