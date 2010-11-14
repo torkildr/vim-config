@@ -47,7 +47,7 @@ vnoremap / /\v
 
 " Bindings
 cmap w!! w !sudo tee % >/dev/null	" Sudo to write
-set pastetoggle=<F2>			" Toggle paste mode with F2
+set pastetoggle=<F3>			" Toggle paste mode with F3
 
 " Functions
 fun! s:ToggleMouse()
@@ -73,8 +73,8 @@ call pathogen#helptags()
 let NERDTreeShowFiles=1
 let NERDTreeShowHidden=1
 let NERDTreeHighlightCursorline=1
-let NERDTreeMouseMode=2
-map <F2> :NERDTreeToggle<cr>
+let NER2TreeMouseMode=2
+nmap <F9> <Esc>:NERDTreeToggle<CR>
 
 " OS X doesn't seem to want syntax as default...
 syntax on
