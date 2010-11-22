@@ -1,0 +1,46 @@
+" Inspired/based on http://dev.launchpad.net/UltimateVimPythonSetup
+" Basically makes Python coding conform to the Python Style Guide
+
+" Wrapping and tabbing
+set tw=78 ts=4 sw=4 sta et sts=4 ai
+
+" Python syntax highlighting
+let python_highlight_all = 1
+
+" Smart indenting
+set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+
+" Auto completion via <C-space>
+set omnifunc=pythoncomplete#Complete
+inoremap <Nul> <C-x><C-o>
+
+" Wrap at 72 chars for comments
+set formatoptions=cq textwidth=72 foldignore= wildignore+=*.py[co]
+
+" Highlight end of line whitespace
+highlight WhitespaceEOL ctermbg=red guibg=red
+match WhitespaceEOL /\s\+$/
+
+" Highlighting an import and pressing 'gf' jumps to that file
+python << EOF
+import os
+import sys
+import vim
+for p in sys.path:
+    if os.path.isdir(p):
+        vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
+EOF
+
+" Use :make to see syntax errors. (:cn and :cp to move around, :dist to see all errors)
+set makeprg=python\ -c\ "import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
+set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z[%^\ ]%\\@=%m
+
+" Execute a selection of code by entering VISUAL and hitting <C-h> to run it
+python << EOL
+import vim
+def EvaulateCurrentRange():
+    eval(compile('\n'.join(vim.current.range),'','exec'),globals())
+EOL
+map <C-h> :py EvaluateCurrentRange()
+
+vim:syntax=vim
