@@ -43,4 +43,4 @@ def EvaulateCurrentRange():
 EOL
 map <C-h> :py EvaluateCurrentRange()
 
-vim:syntax=vim
+" vim:syntax=vim
