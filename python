@@ -38,7 +38,7 @@ set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z[%^\ ]%\\@=%m
 " Execute a selection of code by entering VISUAL and hitting <C-h> to run it
 python << EOL
 import vim
-def EvaulateCurrentRange():
+def EvaluateCurrentRange():
     eval(compile('\n'.join(vim.current.range),'','exec'),globals())
 EOL
 map <C-h> :py EvaluateCurrentRange()
