@@ -20,7 +20,7 @@ set history=1000			" Remember more commands and search history
 set undolevels=1000			" Use many levels of undo
 set wildignore=*.swp,*.bak,*.pyc,*.class " Ignore some file endings
 set title				" Change terminals title
-"set visualbell				" Don't beep
+set visualbell				" Don't beep
 set noerrorbells			" Don't beep
 set nobackup				" No backup files!
 set noswapfile				" No swap files!
