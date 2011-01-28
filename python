@@ -1,8 +1,16 @@
 " Inspired/based on http://dev.launchpad.net/UltimateVimPythonSetup
 " Basically makes Python coding conform to the Python Style Guide
 
-" Wrapping and tabbing
-set tw=78 ts=4 sw=4 sta et sts=4 ai
+" Tabbing
+set expandtab
+set hls
+set textwidth=79
+set tabstop=8
+set softtabstop=4
+set shiftwidth=4
+set autoindent
+set ruler
+set smarttab
 
 " Python syntax highlighting
 let python_highlight_all = 1
