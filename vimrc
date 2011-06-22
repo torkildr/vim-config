@@ -33,15 +33,21 @@ set fileformats="unix,dos,mac"
 
 filetype plugin indent on
 
+" Set window size and color scheme for gvim
+if has("gui_running")
+    set lines=40
+    set columns=100
+endif
+
+colorscheme twilight
+
 " Automatically use regular regexp for matching by prepending \v
 nnoremap / /\v
 vnoremap / /\v
 
-colorscheme twilight
-
 " Bindings
 cmap w!! w !sudo tee % >/dev/null	" Sudo to write
-set pastetoggle=<F2>			" Toggle paste mode with F2
+set pastetoggle=<F3>			" Toggle paste mode with F3
 
 " Functions
 fun! s:ToggleMouse()
@@ -67,8 +73,17 @@ call pathogen#helptags()
 let NERDTreeShowFiles=1
 let NERDTreeShowHidden=1
 let NERDTreeHighlightCursorline=1
-let NERDTreeMouseMode=2
+let NER2TreeMouseMode=2
+nmap <F9> <Esc>:NERDTreeToggle<CR>
 
 " OS X doesn't seem to want syntax as default...
 syntax on
 
+" Load some awesome python stuff
+if !exists("autocommands_loaded")
+    let autocommands_loaded = 1
+    autocmd BufRead,BufNewFile,FileReadPost *.py source ~/.vim/python
+endif
+
+" Remember where you were the last time you edited the file.
+au BufReadPost * if line ("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
