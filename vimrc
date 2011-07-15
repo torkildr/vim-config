@@ -31,6 +31,7 @@ set nolist				                    " Don't show invisible chars by default
 set mouse=a				                    " Turn on mouse support where applicable
 set modelines=0
 set fileformats="unix,dos,mac"
+set fenc=utf8
 
 "filetype plugin indent on
 
