@@ -32,6 +32,8 @@ set mouse=a				                    " Turn on mouse support where applicable
 set modelines=0
 set fileformats="unix,dos,mac"
 set fenc=utf8
+set laststatus=2
+set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
 "filetype plugin indent on
 
