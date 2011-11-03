@@ -30,6 +30,9 @@ set nolist				" Don't show invisible chars by default
 set mouse=a				" Turn on mouse support where applicable
 set modelines=0
 set fileformats="unix,dos,mac"
+set fenc=utf8
+set laststatus=2
+set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
 filetype plugin indent on
 
@@ -83,6 +86,7 @@ syntax on
 if !exists("autocommands_loaded")
     let autocommands_loaded = 1
     autocmd BufRead,BufNewFile,FileReadPost *.py source ~/.vim/python
+    autocmd BufRead,BufNewFile,FileReadPost *.mako,*.mak set filetype=mako
 endif
 
 " Remember where you were the last time you edited the file.

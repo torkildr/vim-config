@@ -81,12 +81,12 @@ endfunction
 function GetMakoIndent()
     " Find a non-empty line above the current line
     let lnum = prevnonblank(v:lnum - 1)
-    
+
     " Hit the start of the file, use zero indent.
     if lnum == 0
         return 0
     endif
-    
+
     let line = getline(lnum)        " last line
     let cline = getline(v:lnum)     " current line
     let pline = getline(lnum - 1)   " previous to last line
@@ -94,23 +94,23 @@ function GetMakoIndent()
 	if line =~ '^\s*##'
 		return indent(lnum)
 	end
-    
+
     let restore_ic=&ic
     let &ic=1 " ignore case
-    
+
     let ind = <SID>HtmlIndentSum(lnum, -1)
 	let ind = <SID>HtmlIndentSum(lnum, -1)
 	let ind = ind + <SID>HtmlIndentSum(v:lnum, 0)
-    
+
 	let &ic=restore_ic
-	
+
 	let ind = indent(lnum) + (&sw * ind)
-    
+
     " Indent after %anything: or <%anything NOT ending in />
     if line =~ '^\s*%.*:\s*$'
         let ind = ind + &sw
     endif
-    
+
     " Unindent before %end* or </%anything
     if cline =~ '^\s*%\s*end'
         let ind = ind - &sw
@@ -144,7 +144,7 @@ function GetMakoIndent()
             let ind = ind + &sw
         endif
     endif
-    
+
     return ind
 endfunction
 
