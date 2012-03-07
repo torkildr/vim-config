@@ -31,6 +31,7 @@ set mouse=a				" Turn on mouse support where applicable
 set modelines=0
 set fileformats="unix,dos,mac"
 set fenc=utf8
+let mapleader=","
 set laststatus=2
 set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
@@ -91,3 +92,7 @@ endif
 
 " Remember where you were the last time you edited the file.
 au BufReadPost * if line ("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+
+" Set plugin options
+let g:pep8_map='<leader>8'
+map <leader>n :NERDTreeToggle<CR>
