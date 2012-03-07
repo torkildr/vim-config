@@ -28,7 +28,6 @@ set scrolloff=4				" Keep 4 lines off the edges of the screen when scrolling
 set gdefault				" Search/replace globally
 set nolist				" Don't show invisible chars by default
 set mouse=a				" Turn on mouse support where applicable
-set modelines=0
 set fileformats="unix,dos,mac"
 set fenc=utf8
 let mapleader=","
